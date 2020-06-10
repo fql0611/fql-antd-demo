@@ -1,0 +1,17 @@
+@ECHO off
+SETLOCAL
+CALL :find_dp0
+
+IF EXIST "E:\npm\npm_global\node.exe" (
+  SET "_prog=E:\npm\npm_global\node.exe"
+) ELSE (
+  SET "_prog=node"
+  SET PATHEXT=%PATHEXT:;.JS;=;%
+)
+
+"%_prog%"  "E:\npm\npm_global\node_modules\antd-init\bin\antd-init" %*
+ENDLOCAL
+EXIT /b %errorlevel%
+:find_dp0
+SET dp0=%~dp0
+EXIT /b
